@@ -2,9 +2,9 @@
 @model Parking.App.Frontend.EliminarParqueaderoModel
 @{
 }
-<h1>Eliminar Parqueadero </h1>
+<h1>Eliminar Parqueadero @Model.parqueadero.Espacio</h1>
 <form method="post" class="mt-3">
-    <input hidden asp-for="parqueadero.Placa">
+   
     <input hidden asp-for="parqueadero.Id">
     <div class="form-group row">
         <button type="submit" class="btn btn-primary">Eliminar</button>
