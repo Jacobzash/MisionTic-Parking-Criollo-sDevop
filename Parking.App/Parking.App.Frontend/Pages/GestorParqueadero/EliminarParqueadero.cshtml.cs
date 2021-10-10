@@ -9,8 +9,25 @@ namespace Parking.App.Frontend
 {
     public class EliminarParqueaderoModel : PageModel
     {
-        public void OnGet()
+        private readonly IRepositorioParqueadero repositorioParqueadero;
+        public Parqueadero parqueadero {get; set; }
+
+        public EliminarParqueaderoModel(IRepositorioParqueadero repositorioParqueadero){
+            this.repositorioParqueadero = repositorioParqueadero;
+        }
+        public void OnGet(int Id)
         {
+            parqueadero = repositorioParqueadero.getParqueadero(Id);
+        }
+
+        public IActionResult OnPost(Parqueadero parqueadero){
+            try{
+                repositorioParqueadero.removeParqueadero(parqueadero.Id);
+                return RedirectToPage("./ListarParqueadero");
+            }
+            catch{
+                return RedirectToPage("../Error");
+            }
         }
     }
 }
