@@ -26,7 +26,9 @@
         <td>@parqueadero.Hora_Entrada</td>
         <td>@parqueadero.Hora_Salida</td>  
         <td>
-            <a class="btn btn-primary table-btn" asp-page="./EditarParqueadero" asp-route-Id="@parqueadero.Id">Editar</a>
+            <a class="btn btn-primary table-btn" asp-page="./DetalleParqueadero" asp-route-id="@parqueadero.Id">Ver más</a>
+            <a class="btn btn-primary table-btn" asp-page="./EditarParqueadero" asp-route-id="@parqueadero.Id">Editar</a>
+            <a class="btn btn-primary table-btn" asp-page="./EliminarParqueadero" asp-route-id="@parqueadero.Id">Eliminar</a>
         </td>    
   </tr>
 }
