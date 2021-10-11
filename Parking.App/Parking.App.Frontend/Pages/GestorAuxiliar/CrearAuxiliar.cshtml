@@ -9,32 +9,38 @@
     <div class="form-row">
 	<div class="form-group col-md-6">
         <label asp-for="auxiliar.Nombre" class="col-sm-2">Nombre</label>
-        <input asp-for="auxiliar.Nombre" class="form-control" placeholder="Nombre Usuario" value="" required >        
+        <input asp-for="auxiliar.Nombre" class="form-control" placeholder="Nombre Usuario" value="" > 
+        <span class ="text-danger" asp-validation-for="auxiliar.Nombre"></span>       
 	</div>
 	<div class="form-group col-md-6">
         <label asp-for="auxiliar.Identificacion" class="col-sm-2">Identificacion</label>
-        <input asp-for="auxiliar.Identificacion" class="form-control" placeholder="Identificacion Usuario" value="" required>        
+        <input asp-for="auxiliar.Identificacion" class="form-control" placeholder="Identificacion Usuario" value="" > 
+        <span class ="text-danger" asp-validation-for="auxiliar.Identificacion"></span>       
     </div>	   
     
 
 	<div class="form-group col-md-6">  
         <label asp-for="auxiliar.Telefono" class="col-sm-2">Telefono</label>
-        <input asp-for="auxiliar.Telefono" class="form-control" placeholder="Telefono Usuario" value="" required> 
+        <input asp-for="auxiliar.Telefono" class="form-control" placeholder="Telefono Usuario" value="" > 
+        <span class ="text-danger" asp-validation-for="auxiliar.Telefono"></span>
 	</div>
 
 	<div class="form-group col-md-6">
         <label asp-for="auxiliar.Direccion" class="col-sm-2">Direccion</label>
-        <input asp-for="auxiliar.Direccion" class="form-control" placeholder="Direccion Usuario" value="">        
+        <input asp-for="auxiliar.Direccion" class="form-control" placeholder="Direccion Usuario" value="">
+        <span class ="text-danger" asp-validation-for="auxiliar.Direccion"></span>        
     </div> 
 
     <div class="form-group col-md-6">
         <label asp-for="auxiliar.Email" class="col-sm-2">Email</label>
-        <input asp-for="auxiliar.Email" class="form-control" placeholder="Email" value="" required>        
+        <input asp-for="auxiliar.Email" class="form-control" placeholder="Email" value="" required>
+               
 	</div>
 
 	<div class="form-group col-md-6">
         <label asp-for="auxiliar.Contrasena" class="col-sm-2">Contraseña</label>
-        <input asp-for="auxiliar.Contrasena" class="form-control" placeholder="**" value="" required>
+        <input asp-for="auxiliar.Contrasena" class="form-control" placeholder="**" value="" >
+        <span class ="text-danger" asp-validation-for="auxiliar.Contrasena"></span>
     </div>
 
     <div class="form-group col-md-6">
@@ -44,7 +50,8 @@
 
 	<div class="form-group col-md-6">
         <label asp-for="auxiliar.Turno" class="col-sm-2">Turno</label>
-        <input asp-for="auxiliar.Turno" class="form-control" placeholder="Turno Asignado" value="" required>        
+        <input asp-for="auxiliar.Turno" class="form-control" placeholder="Turno Asignado" value="">
+        <span class ="text-danger" asp-validation-for="auxiliar.Turno"></span>        
     </div>
 	</div>
 

@@ -14,18 +14,21 @@
     <div class="form-row">
     <div class="form-group col-md-6">
         <label asp-for="gerente.Nombre" class="col-sm-2">Nombre</label>
-        <input asp-for="gerente.Nombre" class="form-control"  required >        
+        <input asp-for="gerente.Nombre" class="form-control">
+        <span class ="text-danger" asp-validation-for="gerente.Nombre"></span>        
     </div>
 
     <div class="form-group col-md-6">
         <label asp-for="gerente.Identificacion" class="col-sm-2">Identificacion</label>
-        <input asp-for="gerente.Identificacion" class="form-control"  required>        
+        <input asp-for="gerente.Identificacion" class="form-control">  
+        <span class ="text-danger" asp-validation-for="gerente.Identificacion"></span>      
     </div>   
     
         
     <div class="form-group col-md-6">  
         <label asp-for="gerente.Telefono" class="col-sm-2">Telefono</label>
-        <input asp-for="gerente.Telefono" class="form-control"  required>           
+        <input asp-for="gerente.Telefono" class="form-control">  
+        <span class ="text-danger" asp-validation-for="gerente.Telefono"></span>         
     </div>
 
     <div class="form-group col-md-6">
@@ -40,7 +43,8 @@
 
     <div class="form-group col-md-6">
         <label asp-for="gerente.Contrasena" class="col-sm-2">Contraseña</label>
-        <input asp-for="gerente.Contrasena" class="form-control"  required>
+        <input asp-for="gerente.Contrasena" class="form-control">
+        <span class ="text-danger" asp-validation-for="gerente.Contrasena"></span> 
     </div>
 
     

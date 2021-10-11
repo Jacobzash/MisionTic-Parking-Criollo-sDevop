@@ -24,8 +24,24 @@ namespace Parking.App.Frontend
         }
         public IActionResult OnPost (Gerente gerente)
         {
-            repositorioGerente.addGerente(gerente);
-            return RedirectToPage("./ListarGerente");
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    repositorioGerente.addGerente(gerente);
+                    return RedirectToPage("./ListarGerente");
+                }
+                catch
+                {
+                    return RedirectToPage("../Error");
+                }
+            }
+            else
+            {
+                return Page();
+            }
+
+
         }
     }
 }

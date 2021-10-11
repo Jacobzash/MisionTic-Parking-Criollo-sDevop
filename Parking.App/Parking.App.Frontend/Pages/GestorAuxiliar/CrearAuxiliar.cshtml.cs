@@ -14,7 +14,7 @@ namespace Parking.App.Frontend
         private IRepositorioAuxiliar repositorioAuxiliar;
         public Auxiliar auxiliar { get; set; }
 
-        public CrearAuxiliarModel (IRepositorioAuxiliar repositorioAuxiliar)
+        public CrearAuxiliarModel(IRepositorioAuxiliar repositorioAuxiliar)
         {
             this.repositorioAuxiliar = repositorioAuxiliar;
         }
@@ -22,10 +22,25 @@ namespace Parking.App.Frontend
         {
             Auxiliar auxiliar = new Auxiliar();
         }
-        public IActionResult OnPost (Auxiliar auxiliar)
+        public IActionResult OnPost(Auxiliar auxiliar)
         {
-            repositorioAuxiliar.addAuxiliar(auxiliar);
-            return RedirectToPage("./index");
+            if (ModelState.IsValid)
+            {
+                try{
+                repositorioAuxiliar.addAuxiliar(auxiliar);
+                return RedirectToPage("./index");
+                }
+                catch{
+                    return RedirectToPage("../Error");
+                }
+            }
+            else
+            {
+                return Page();
+            }
+
         }
+
     }
 }
+

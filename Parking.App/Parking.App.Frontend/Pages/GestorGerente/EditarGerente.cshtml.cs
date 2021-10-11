@@ -25,8 +25,15 @@ namespace Parking.App.Frontend
         {
             if (ModelState.IsValid)
             {
-                repositorioGerente.editGerente(gerente);
-                return RedirectToPage ("./ListarGerente");
+                try
+                {                
+                    repositorioGerente.editGerente(gerente);
+                    return RedirectToPage ("./ListarGerente");
+                }
+                catch
+                {
+                    return RedirectToPage("../Error");
+                }  
             }
             else
             {
