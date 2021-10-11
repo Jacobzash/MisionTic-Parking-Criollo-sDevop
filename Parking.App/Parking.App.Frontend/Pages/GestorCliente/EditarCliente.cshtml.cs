@@ -25,8 +25,15 @@ namespace Parking.App.Frontend
         {
             if (ModelState.IsValid)
             {
-                repositorioCliente.editCliente(cliente);
-                return RedirectToPage ("./ListarCliente");
+                try
+                {
+                    repositorioCliente.editCliente(cliente);
+                    return RedirectToPage("./ListarCliente");
+                }
+                catch
+                {
+                    return RedirectToPage("../Error");
+                }
             }
             else
             {

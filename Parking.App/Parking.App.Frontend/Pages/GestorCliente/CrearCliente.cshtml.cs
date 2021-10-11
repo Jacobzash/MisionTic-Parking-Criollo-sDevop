@@ -14,7 +14,7 @@ namespace Parking.App.Frontend
         private IRepositorioCliente repositorioCliente;
         public Cliente cliente { get; set; }
 
-        public CrearClienteModel (IRepositorioCliente repositorioCliente)
+        public CrearClienteModel(IRepositorioCliente repositorioCliente)
         {
             this.repositorioCliente = repositorioCliente;
         }
@@ -22,10 +22,25 @@ namespace Parking.App.Frontend
         {
             Cliente cliente = new Cliente();
         }
-        public IActionResult OnPost (Cliente cliente)
+        public IActionResult OnPost(Cliente cliente)
         {
-            repositorioCliente.addCliente(cliente);
-            return RedirectToPage("./ListarCliente");
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    repositorioCliente.addCliente(cliente);
+                    return RedirectToPage("./ListarCliente");
+                }
+                catch
+                {
+                    return RedirectToPage("../Error");
+                }
+            }
+            else
+            {
+                return Page();
+            }
+
         }
     }
 }
