@@ -1,4 +1,14 @@
 ﻿@page
 @model Parking.App.Frontend.Pages.DetalleReservaModel
+@using Dominio
 @{
 }
+<h1>Descripción de la reserva @Model.reserva.Id</h1>
+<ul>
+        <li>@Model.reserva.Vehiculo.Placa</li>
+        <li>@Model.reserva.Hora_Entrada</li>
+        <li>@Model.reserva.Hora_Salida</li>
+        <li>@Model.reserva.Estado_Reserva</li>
+       
+    
+</ul>

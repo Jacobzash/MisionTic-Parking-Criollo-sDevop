@@ -25,13 +25,12 @@ namespace Parking.app.Persistencia
         {
             Reserva ReservaAEditar = _contexto.Reservas.FirstOrDefault(f => f.Id == Reserva.Id);
             if(ReservaAEditar != null){
-                ReservaAEditar.Hora_Inicio = Reserva.Hora_Inicio;
-                ReservaAEditar.Hora_Final =Reserva.Hora_Final;
-                ReservaAEditar.Estado_Reserva = Reserva.Estado_Reserva;
-                ReservaAEditar.Persona = Reserva.Persona;
                 ReservaAEditar.Vehiculo = Reserva.Vehiculo;
-                ReservaAEditar.Parqueadero = Reserva.Parqueadero;
-                              
+                ReservaAEditar.Espacio = Reserva.Espacio;
+                ReservaAEditar.Hora_Entrada = Reserva.Hora_Entrada;
+                ReservaAEditar.Hora_Salida = Reserva.Hora_Salida;
+                ReservaAEditar.Estado_Reserva = Reserva.Estado_Reserva;
+                                             
                 
                 _contexto.SaveChanges();
             }
@@ -43,7 +42,7 @@ namespace Parking.app.Persistencia
 
         public IEnumerable<Reserva> getAllReservas()
         {
-             return _contexto.Reservas;//Include("persona").Include("Vehiculo").Include("Parqueadero");
+             return _contexto.Reservas.Include("Vehiculo");
         }
 
        
