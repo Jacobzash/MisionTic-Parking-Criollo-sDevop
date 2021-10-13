@@ -17,8 +17,11 @@ namespace Parking.App.Frontend.Pages
         public Reserva reserva { get; set; }
         public List<SelectListItem> vehiculos { get; set; }
         public int IdVehiculo { get; set; }
+
+        public String Mensaje { get; set;}
                
-        public CrearReservaModel(IRepositorioReserva repositorioReserva, IRepositorioVehiculo repositorioVehiculo){
+        public CrearReservaModel(IRepositorioReserva repositorioReserva, IRepositorioVehiculo repositorioVehiculo)
+        {
             this.repositorioReserva = repositorioReserva;
             this.repositorioVehiculo = repositorioVehiculo;
             reserva = new Reserva();
@@ -35,28 +38,34 @@ namespace Parking.App.Frontend.Pages
             
         }
 
-        public IActionResult OnPost(Reserva reserva, int IdVehiculo){
+        public IActionResult OnPost(Reserva reserva, int IdVehiculo)
+        {
+            Vehiculo vehiculo = repositorioVehiculo.getVehiculo(IdVehiculo);
+
+            Reserva nuevoReserva = new Reserva(){
+
+                Espacio = reserva.Espacio,
+                Vehiculo = vehiculo,
+                Hora_Entrada = reserva.Hora_Entrada,
+                Hora_Salida = reserva.Hora_Salida,
+                Estado_Reserva = reserva.Estado_Reserva,
+            };
+           
             if (ModelState.IsValid)
             {
-                try
-                {
-                    Vehiculo vehiculo = repositorioVehiculo.getVehiculo(IdVehiculo);
-
-                    repositorioReserva.addReserva(reserva);
-
-                    reserva.Vehiculo = vehiculo;
-
-
+                Reserva reservaSolicitado = repositorioReserva.addReserva(nuevoReserva);
+                if(reservaSolicitado!=null){
                     return RedirectToPage("./ListarReserva");
                 }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                    return RedirectToPage("../Error");
+                else{
+                    
+                    Mensaje = "El espacio se encuentra ocupado o el vehiculo ya se encuentr asignado a un parquedero";
+                    
+                    Console.WriteLine(Mensaje);
+                    return Page();
                 }
             }
-            else
-            {
+            else{
                 return Page();
             }
         }

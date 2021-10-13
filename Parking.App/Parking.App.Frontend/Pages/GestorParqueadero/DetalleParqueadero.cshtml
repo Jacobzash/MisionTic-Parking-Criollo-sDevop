@@ -1,8 +1,9 @@
 ﻿@page
 @model Parking.App.Frontend.DetalleParqueaderoModel
+@using Parking.App.Dominio
 @{
 }
-h1>Detalle del Parquedero @Model.parqueadero.Id</h1>
+<h1>Detalle del Parquedero @Model.parqueadero.Espacio</h1>
 <ul>     
         <li>@Model.parqueadero.Vehiculo.Placa</li>
         <li>@Model.parqueadero.Espacio</li>
