@@ -23,7 +23,7 @@ namespace Parking.app.Persistencia
 
         public Vehiculo editVehiculo(Vehiculo Vehiculo)
         {
-            Vehiculo VehiculoAEditar = _contexto.Vehiculos.FirstOrDefault(f => f.Id == Vehiculo.Id);
+            Vehiculo VehiculoAEditar = _contexto.Vehiculos.Include("Cliente").FirstOrDefault(f => f.Id == Vehiculo.Id);
             if(VehiculoAEditar != null){
                 VehiculoAEditar.Marca = Vehiculo.Marca;
                 VehiculoAEditar.Model =Vehiculo.Model;
@@ -49,7 +49,7 @@ namespace Parking.app.Persistencia
 
         public Vehiculo getVehiculo(int Id)
         {
-             Vehiculo Vehiculo = _contexto.Vehiculos.FirstOrDefault(x => x.Id == Id);
+             Vehiculo Vehiculo = _contexto.Vehiculos.Include("Cliente").FirstOrDefault(x => x.Id == Id);
              return Vehiculo;
         }
 

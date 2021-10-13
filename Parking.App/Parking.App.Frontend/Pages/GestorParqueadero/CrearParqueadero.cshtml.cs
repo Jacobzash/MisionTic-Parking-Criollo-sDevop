@@ -17,6 +17,8 @@ namespace Parking.App.Frontend
         public Parqueadero parqueadero { get; set; }
         public List<SelectListItem> vehiculos { get; set; }
 
+        public String Mensaje { get; set; }
+
         public int IdVehiculo { get; set; }
         public CrearParqueaderoModel(IRepositorioParqueadero repositorioParqueadero, IRepositorioVehiculo repositorioVehiculo)
         {
@@ -40,28 +42,32 @@ namespace Parking.App.Frontend
         }
         public IActionResult OnPost(Parqueadero parqueadero, int IdVehiculo)
         {
+            Vehiculo vehiculo = repositorioVehiculo.getVehiculo(IdVehiculo);
+
+            Parqueadero nuevoparqueadero = new Parqueadero(){
+
+                Espacio = parqueadero.Espacio,
+                Vehiculo = vehiculo,
+                Hora_Entrada = parqueadero.Hora_Entrada,
+                Hora_Salida = parqueadero.Hora_Salida,
+             
+            };
            
             if (ModelState.IsValid)
             {
-                try
-                {
-                    Vehiculo vehiculo = repositorioVehiculo.getVehiculo(IdVehiculo);
-
-                    repositorioParqueadero.addParqueadero(parqueadero);
-
-                    parqueadero.Vehiculo = vehiculo;
-
-
+                Parqueadero parqueaderoSolicitado = repositorioParqueadero.addParqueadero(nuevoparqueadero);
+                if(parqueaderoSolicitado!=null){
                     return RedirectToPage("./ListarParqueadero");
                 }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                    return RedirectToPage("../Error");
+                else{
+                    
+                    Mensaje = "El espacio se encuentra ocupado o el vehiculo ya se encuentr asignado a un parquedero";
+                    
+                    Console.WriteLine(Mensaje);
+                    return Page();
                 }
             }
-            else
-            {
+            else{
                 return Page();
             }
         }

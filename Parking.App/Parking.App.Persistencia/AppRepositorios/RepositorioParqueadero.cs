@@ -15,15 +15,37 @@ namespace Parking.app.Persistencia
         }
         public Parqueadero addParqueadero(Parqueadero Parqueadero)
         {
-            Parqueadero nuevoParqueadero = _contexto.Add(Parqueadero).Entity;
+            /*Parqueadero nuevoParqueadero = _contexto.Add(Parqueadero).Entity;
             _contexto.SaveChanges();
             return nuevoParqueadero;
+            */
+
+            Parqueadero asigEspacio = _contexto.Parqueaderos.FirstOrDefault(
+                e => e.Espacio == Parqueadero.Espacio &&
+                 Parqueadero.Hora_Entrada >= e.Hora_Entrada &&
+                Parqueadero.Hora_Entrada < e.Hora_Entrada.AddMinutes(30)                 
+                );
+            
+            Parqueadero asigVehiculo = _contexto.Parqueaderos.FirstOrDefault(
+                e => e.Vehiculo.Id == Parqueadero.Vehiculo.Id &&
+                Parqueadero.Hora_Entrada >= e.Hora_Entrada &&
+                Parqueadero.Hora_Entrada < e.Hora_Entrada.AddMinutes(30)                 
+                );
+
+            if(asigEspacio == null && asigVehiculo == null ){
+                Parqueadero nuevoParqueadero = _contexto.Add(Parqueadero).Entity;
+                _contexto.SaveChanges();
+                return nuevoParqueadero;                
+            }
+            else{
+                return null;
+            }
         }
 
 
         public Parqueadero editParqueadero(Parqueadero Parqueadero)
         {
-            Parqueadero ParqueaderoAEditar = _contexto.Parqueaderos.FirstOrDefault(f => f.Id == Parqueadero.Id);
+            Parqueadero ParqueaderoAEditar = _contexto.Parqueaderos.Include("Vehiculo").FirstOrDefault(f => f.Id == Parqueadero.Id);
             if(ParqueaderoAEditar != null){
                 ParqueaderoAEditar.Vehiculo = Parqueadero.Vehiculo;
                 ParqueaderoAEditar.Espacio =Parqueadero.Espacio;
@@ -36,13 +58,6 @@ namespace Parking.app.Persistencia
             return ParqueaderoAEditar;
         }
 
-        
-
-        /*public IEnumerable<Parqueadero> getAllParqueadero()
-        {
-            return _contexto.Parqueaderos;//.Include("cliente");
-        }*/
-
         public IEnumerable<Parqueadero> getAllParqueaderos()
         {
             return _contexto.Parqueaderos.Include("Vehiculo");
@@ -50,7 +65,7 @@ namespace Parking.app.Persistencia
 
         public Parqueadero getParqueadero(int Id)
         {
-             Parqueadero Parqueadero = _contexto.Parqueaderos.FirstOrDefault(x => x.Id == Id);
+             Parqueadero Parqueadero = _contexto.Parqueaderos.Include("Vehiculo").FirstOrDefault(x => x.Id == Id);
              return Parqueadero;
         }
 
