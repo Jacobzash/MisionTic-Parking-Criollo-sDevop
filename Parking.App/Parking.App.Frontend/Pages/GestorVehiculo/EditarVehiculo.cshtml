@@ -3,52 +3,53 @@
 @using Parking.App.Dominio
 @{
 }
-<h1>Editar Vehiculo</h1>
-<form method="post" class="mt-3">
-    <div class="form-group row">
-       
-        <input asp-for="vehiculo.Id" class="form-control"  type="hidden" required >
-        
-    </div>
-    <div class="form-group row">
-        <label asp-for="vehiculo.Marca" class="col-sm-2">Marca</label>
-        <input asp-for="vehiculo.Marca" class="form-control"   >
-        
-    </div>
-    <div class="form-group row">
-        <label asp-for="vehiculo.Model" class="col-sm-2">Modelo</label>
-        <input asp-for="vehiculo.Model" class="form-control"  required>
-        
-    </div>   
-    
-        
-    <div class="form-group row">  
-        <label asp-for="vehiculo.Color" class="col-sm-2">Color</label>
-        <input asp-for="vehiculo.Color" class="form-control"  required>
-           
-    </div>
+<div class = "center">
+<h3>Crear vehiculo</h3>
 
-    <div class="form-group row">
+
+<form method="post" >
+
+
+    <div class="form-row">
+
+    
+		<input asp-for="vehiculo.Id" class="form-control"  type="hidden" required >
+   
+
+	<div class="form-group col-md-6">
+        <label asp-for="vehiculo.Marca" class="col-sm-2">Marca</label>
+        <input asp-for="vehiculo.Marca" class="form-control" placeholder="Marca Vehiculo"  required >        
+	</div>
+	<div class="form-group col-md-6">
+        <label asp-for="vehiculo.Model" class="col-sm-2">Modelo</label>
+        <input asp-for="vehiculo.Model" class="form-control" placeholder="Model Vehiculo"  required>        
+    </div>	       
+
+	<div class="form-group col-md-6">  
+        <label asp-for="vehiculo.Color" class="col-sm-2">Color</label>
+        <input asp-for="vehiculo.Color" class="form-control" placeholder="Color Vehiculo"  required> 
+	</div>
+
+	<div class="form-group col-md-6">
         <label asp-for="vehiculo.Placa" class="col-sm-2">Placa</label>
-        <input asp-for="vehiculo.Placa" class="form-control" required>
-        
+        <input asp-for="vehiculo.Placa" class="form-control" placeholder="Placa Vehiculo" >        
     </div> 
 
-    <div class="form-group row">
+    <div class="form-group col-md-6">
         <label asp-for="vehiculo.Tipo" class="col-sm-2">Tipo</label>
-        <div class="col-sm-10">
-            <select asp-for="vehiculo.Tipo" asp-items="Html.GetEnumSelectList<Tipo>()"></select>   
-        </div>
-        <span class="text-danger" asp-validation-for="vehiculo.Tipo"></span>
-    </div>
+        <select asp-for="vehiculo.Tipo" class="form-control" asp-items="Html.GetEnumSelectList<Tipo>()"></select> 
+        <span class="text-danger" asp-validation-for="vehiculo.Tipo"></span>      
+	</div>
 
-    <div class="form-group row">
+	<div class="form-group col-md-6">
         <label asp-for="IdCliente" class="col-sm-2">Cliente</label>
-        <select asp-for="IdCliente" asp-items="Model.clientes"></select>
+        <select asp-for="IdCliente" class="form-control" asp-items="Model.clientes"></select>
     </div>
+	</div>
 
-    <div class="form-group row">
+    <div>
         <button type="submit" class="btn btn-primary">Guardar</button>
         <a asp-page="./ListarVehiculo" class="btn btn-primary">Cancelar</a>
     </div>
 </form>
+</div>

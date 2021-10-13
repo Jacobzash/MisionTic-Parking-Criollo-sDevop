@@ -2,12 +2,17 @@
 @model Parking.App.Frontend.DetalleVehiculoModel
 @{
 }
-<h1>Detalle del Vehiculo @Model.vehiculo.Placa</h1>
-<ul>
-       
-        <li>@Model.vehiculo.Marca</li>
-        <li>@Model.vehiculo.Model</li>
-        <li>@Model.vehiculo.Color</li>
-        <li>@Model.vehiculo.Tipo</li>
+
+<h3>Detalle del Vehiculo - @Model.vehiculo.Placa</h3>
+<p>
+<p>
+        <br>
+        <br> 
+        <li>Nombre:  @Model.vehiculo.Marca</li><br>    
+        <li>Identificacion:  @Model.vehiculo.Model</li><br>        
+        <li>Telefono:  @Model.vehiculo.Color</li><br>        
+        <li>Direccion:  @Model.vehiculo.Tipo</li><br>        
       
-</ul>
+
+<br><br>
+<a asp-page="./ListarVehiculo" class="btn btn-primary">Volver</a>

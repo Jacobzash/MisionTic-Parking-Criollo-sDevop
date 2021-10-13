@@ -3,43 +3,39 @@
 @{
 }
 
-<h1>Gestionar Vehiculos</h1>
+<div class = "center">
+<h3>Gestionar Vehiculos</h3>
 <P>En esta pagina podras Gestionar los Vehiculos</P>
-<a class="btn btn-primary table-btn" asp-page="./CrearVehiculo">Agrega Vehiculo</a>
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Marca</th>
-      <th scope="col">Modelo</th>
-      <th scope="col">Color</th>
-      <th scope="col">Tipo</th>
-      <th scope="col">Placa</th>
-      <th scope="col">Cliente</th>
-      <th scope="col">Identificacion</th>
-      
-  
-    
-    </tr>
-  </thead>
+<div class="form-group row" style="text-align: left:10%" id="detail"><a class="btn btn-primary table-btn" asp-page="./CrearVehiculo">Agrega Vehiculo</a></div>
 
-@foreach(var vehiculo in Model.vehiculos){
- <tr>
-        <td>@vehiculo.Marca</td>
-        <td>@vehiculo.Model</td>
-        <td>@vehiculo.Color</td>
-        <td>@vehiculo.Tipo</td>
-        <td>@vehiculo.Placa</td>
-        <td>@vehiculo.Cliente.Nombre</td>
-        <td>@vehiculo.Cliente.Identificacion</td>
-       
-        
-        <td>
-            <a class="btn btn-primary table-btn" asp-page="./DetalleVehiculo" asp-route-id="@vehiculo.Id">Ver más</a>
-            <a class="btn btn-primary table-btn" asp-page="./EditarVehiculo" asp-route-id="@vehiculo.Id">Editar</a>
-            <a class="btn btn-primary table-btn" asp-page="./EliminarVehiculo" asp-route-id="@vehiculo.Id">Eliminar</a>
-        </td> 
-          
-    </tr>
-}
-</table>
+	<table class="table table-dark" >
+	  <thead class="thead-dark">
+		<tr>
+		  <th scope="col">Marca</th>
+		  <th scope="col">Modelo</th>
+		  <th scope="col">Color</th>
+		  <th scope="col">Tipo</th>
+		  <th scope="col">Placa</th>
+		  <th scope="col">Cliente</th>
+		  <th scope="col">Identificacion</th>
+		  <th scope="col">▲</th>
+		  <th scope="col">▼</th>
 
+		</tr>
+	  </thead>
+		@foreach(var vehiculo in Model.vehiculos){
+		<tr>
+			<td><b><a style="color:#FFC300" asp-page="./DetalleVehiculo" asp-route-id="@vehiculo.Id">@vehiculo.Marca</a></b></td>
+
+			<td>@vehiculo.Model</td>
+			<td>@vehiculo.Color</td>
+			<td>@vehiculo.Tipo</td>
+			<td>@vehiculo.Placa</td>
+			<td>@vehiculo.Cliente.Nombre</td>
+			<td>@vehiculo.Cliente.Identificacion</td>
+			<td><a class="btn btn-primary table-btn" asp-page="./EditarVehiculo" asp-route-id="@vehiculo.Id">Editar</a></td>
+			<td><a class="btn btn-primary table-btn" asp-page="./EliminarVehiculo" asp-route-id="@vehiculo.Id">Eliminar</a></td>  
+		</tr>
+	}
+	</table>
+</div>
