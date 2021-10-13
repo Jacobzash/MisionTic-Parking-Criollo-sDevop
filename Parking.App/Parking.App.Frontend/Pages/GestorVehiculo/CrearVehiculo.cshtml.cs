@@ -32,9 +32,9 @@ namespace Parking.App.Frontend
                 }
             ).ToList();
         }
-        public void OnGet()
+        public void OnGet(int Id)
         {
-            // Vehiculo vehiculo = new Vehiculo();
+            vehiculo = repositorioVehiculo.getVehiculo(Id);
         }
         public ActionResult OnPost(Vehiculo vehiculo, int IdCliente)
         {
@@ -46,11 +46,9 @@ namespace Parking.App.Frontend
                 {
                     Cliente cliente = repositorioCliente.getCliente(IdCliente);
 
-                    repositorioVehiculo.addVehiculo(vehiculo);
-
                     vehiculo.Cliente = cliente;
-                  
-
+                    repositorioVehiculo.addVehiculo(vehiculo);
+                    
                     return RedirectToPage("./ListarVehiculo");
                 }
                 catch (Exception e)
