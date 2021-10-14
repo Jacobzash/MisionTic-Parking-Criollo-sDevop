@@ -1,3 +1,8 @@
+using System.Buffers;
+using System.Transactions;
+using System.Runtime.Serialization;
+using System.Net.Security;
+using System.Net.Mime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +30,19 @@ namespace Parking.App.Frontend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
+            services.AddRazorPages(
+                options =>{
+                    options.Conventions.AuthorizeFolder("/GestorAdministrador");
+                    options.Conventions.AuthorizeFolder("/GestorAuxiliar");
+                    options.Conventions.AuthorizeFolder("/GestorCliente");
+                    options.Conventions.AuthorizeFolder("/GestorGerente");
+                    options.Conventions.AuthorizeFolder("/GestorParqueadero");
+                    options.Conventions.AuthorizeFolder("/GestorReserva");
+                    options.Conventions.AuthorizeFolder("/GestorReservaCliente");
+                    options.Conventions.AuthorizeFolder("/GestorVehiculo");
+                    }
+                
+            );
             Persistencia.AppContext _contexto = new Persistencia.AppContext();
             services.AddSingleton<IRepositorioAuxiliar>(new RepositorioAuxiliar(_contexto));
             services.AddSingleton<IRepositorioGerente>(new RepositorioGerente(_contexto));
@@ -34,6 +51,7 @@ namespace Parking.App.Frontend
             services.AddSingleton<IRepositorioVehiculo>(new RepositorioVehiculo(_contexto));
             services.AddSingleton<IRepositorioReserva>(new RepositorioReserva(_contexto));
             services.AddSingleton<IRepositorioParqueadero>(new RepositorioParqueadero(_contexto));
+            services.AddControllersWithViews();
             
         }
 
@@ -55,11 +73,14 @@ namespace Parking.App.Frontend
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller-Conference}/{action=Index}/{id}");
                 endpoints.MapRazorPages();
             });
         }

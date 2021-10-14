@@ -47,7 +47,6 @@ D:\Parking\MisionTic-Parking-Criollo-sDevop\Parking.App\Parking.App.Persistencia
 D:\Parking\MisionTic-Parking-Criollo-sDevop\Parking.App\Parking.App.Persistencia\obj\Debug\net5.0\Parking.App.Persistencia.AssemblyInfoInputs.cache
 D:\Parking\MisionTic-Parking-Criollo-sDevop\Parking.App\Parking.App.Persistencia\obj\Debug\net5.0\Parking.App.Persistencia.AssemblyInfo.cs
 D:\Parking\MisionTic-Parking-Criollo-sDevop\Parking.App\Parking.App.Persistencia\obj\Debug\net5.0\Parking.App.Persistencia.csproj.CoreCompileInputs.cache
-D:\Parking\MisionTic-Parking-Criollo-sDevop\Parking.App\Parking.App.Persistencia\obj\Debug\net5.0\Parking.App.Persistencia.csproj.CopyComplete
 D:\Parking\MisionTic-Parking-Criollo-sDevop\Parking.App\Parking.App.Persistencia\obj\Debug\net5.0\Parking.App.Persistencia.dll
 D:\Parking\MisionTic-Parking-Criollo-sDevop\Parking.App\Parking.App.Persistencia\obj\Debug\net5.0\ref\Parking.App.Persistencia.dll
 D:\Parking\MisionTic-Parking-Criollo-sDevop\Parking.App\Parking.App.Persistencia\obj\Debug\net5.0\Parking.App.Persistencia.pdb

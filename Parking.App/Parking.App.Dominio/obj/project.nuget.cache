@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "xl5ULgV98IJqWsGkHvIp/rrPZu56XubdY3eND0BCujqoTaWD9YPMidKu/pU9B8MabikTbumhC2eTzfSsHjIBxQ==",
+  "dgSpecHash": "xpYVO1q7K9YajtCYR+bPhQ6UsJBDwFtrbfcXG18Nh1lY/tkXsUCPHQq+Qe2OZeTxxm3I49aTgoVqhW4JuGp5RQ==",
   "success": true,
-  "projectFilePath": "C:\\Parking\\CriolloDevops\\MisionTic-Parking-Criollo-sDevop\\Parking.App\\Parking.App.Dominio\\Parking.App.Dominio.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\Parking\\MisionTic-Parking-Criollo-sDevop\\Parking.App\\Parking.App.Dominio\\Parking.App.Dominio.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\tec_miguelc\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
