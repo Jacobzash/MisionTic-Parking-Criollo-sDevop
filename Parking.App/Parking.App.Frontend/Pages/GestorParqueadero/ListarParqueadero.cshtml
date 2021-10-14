@@ -3,34 +3,37 @@
 @using Parking.App.Dominio
 @{
 }
-<h1>Gestionar Parqueadero</h1>
+<div class = "center">
+<h3>Gestionar Parqueadero</h3>
 <P>En está página podrá gestionar el parqueadero</P>
 
-<a class="btn btn-primary table-btn" asp-page="./CrearParqueadero">Asignar Parqueadero</a>
-<table class="table">
+<div class="form-group row" style="text-align: left:10%" id="detail"><a class="btn btn-primary table-btn" asp-page="./CrearParqueadero">Asignar Parqueadero</a></div>
+
+<table class="table table-dark">
   <thead class="thead-dark">
     <tr> 
       
       <th scope="col">Espacio</th>
       <th scope="col">Vehiculo</th> 
       <th scope="col">Hora de Entrada</th>
-      <th scope="col">Hora de Salida</th>  
+      <th scope="col">Hora de Salida</th>
+      <th scope="col">▲</th>
+      <th scope="col">▼</th>  
     </tr>
   </thead>
 
-@foreach(var parqueadero in Model.parqueaderos)
-{
+@foreach(var parqueadero in Model.parqueaderos){
   <tr>     
-        <td>@parqueadero.Espacio</td>
+        <td><b><a style="color:#FFC300" asp-page="./DetalleParqueadero" asp-route-id="@parqueadero.Id">@parqueadero.Espacio</a></b></td>
         <td>@parqueadero.Vehiculo.Placa</td>
         <td>@parqueadero.Hora_Entrada</td>
         <td>@parqueadero.Hora_Salida</td>  
-        <td>
-            <a class="btn btn-primary table-btn" asp-page="./DetalleParqueadero" asp-route-id="@parqueadero.Id">Ver más</a>
-            <a class="btn btn-primary table-btn" asp-page="./EditarParqueadero" asp-route-id="@parqueadero.Id">Editar</a>
-            <a class="btn btn-primary table-btn" asp-page="./EliminarParqueadero" asp-route-id="@parqueadero.Id">Eliminar</a>
-        </td>    
+        
+        <td><a class="btn btn-primary table-btn" asp-page="./DetalleParqueadero" asp-route-id="@parqueadero.Id">Ver más</a></td>
+        <td><a class="btn btn-primary table-btn" asp-page="./EditarParqueadero" asp-route-id="@parqueadero.Id">Editar</a></td>
+        <td><a class="btn btn-primary table-btn" asp-page="./EliminarParqueadero" asp-route-id="@parqueadero.Id">Eliminar</a></td>    
   </tr>
 }
 
 </table>
+</div>

@@ -3,11 +3,15 @@
 @using Parking.App.Dominio
 @{
 }
-<h1>Detalle del Parquedero @Model.parqueadero.Espacio</h1>
-<ul>     
-        <li>@Model.parqueadero.Vehiculo.Placa</li>
-        <li>@Model.parqueadero.Espacio</li>
-        <li>@Model.parqueadero.Hora_Entrada</li>
-        <li>@Model.parqueadero.Hora_Salida</li>
-
-</ul>
+<h3>Detalle del Parquedero @Model.parqueadero.Espacio</h3>
+<p>
+<p>   
+        <br>
+        <br>  
+        <li>Placa Vehiculo: @Model.parqueadero.Vehiculo.Placa</li><br> 
+        <li>Espacio: @Model.parqueadero.Espacio</li><br> 
+        <li>Hora Entrada: @Model.parqueadero.Hora_Entrada</li><br> 
+        <li>Hora Salida: @Model.parqueadero.Hora_Salida</li><br> 
+<br>
+        <br> 
+<a asp-page="./index" class="btn btn-primary">Volver</a>
